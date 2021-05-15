@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Card Effect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+  </head>
+  <body>
+    <div id="container" class="container">
+      <form class="container__card">
+        <div class="container__card__graphics">
+          <img class="container__card__graphics__sky" src="./images/city.svg" />
+          <img class="container__card__graphics__graphic" src="./images/dance_boom_box.svg" />
+        </div>
+        <h1>Boot Jol Party</h1>
+        <h2>Cam's fairwell</h2>
+        <p class="container__card__error" hidden></p>
+        <input
+          type="email"
+          class="container__card__nameInput"
+          placeholder="Kandua email"
+          required
+          oninvalid="this.setCustomValidity('Please enter your Kandua email address')"
+          oninput="setCustomValidity('')"
+          name="emailAddress"
+        />
+        <button type="submit" class="container__card__button">RSVP</button>
+        <img class="container__card__loading" src="./images/loading.svg" hidden />
+        <a class="container__card__help">What is this?</a>
+      </form>
+      <form class="container__playlistEntryCard">
+        <h2 class="container__playlistEntryCard__heading">Thank you for RSVP'ing</h2>
+        <h3 class="container__playlistEntryCard__subHeading">
+          That's all we need but if you have time please give us some song recommendations for the playlist
+        </h3>
+        <div class="container__playlistEntryCard__playlist">
+          <div class="container__playlistEntryCard__playlist__titles">
+            <h4>Title</h4>
+            <h4>Artist</h4>
+          </div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title0" /><input id="artist0" /></div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title1" /><input id="artist1" /></div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title2" /><input id="artist2" /></div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title3" /><input id="artist3" /></div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title4" /><input id="artist4" /></div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title5" /><input id="artist5" /></div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title6" /><input id="artist6" /></div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title7" /><input id="artist7" /></div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title8" /><input id="artist8" /></div>
+          <div class="container__playlistEntryCard__playlist__songInput"><input id="title9" /><input id="artist9" /></div>
+          <button type="submit" class="container__card__button">Submit</button>
+        </div>
+      </form>
+      <form class="container__playlistCard">
+        <h1>Thank you for RSVP'ing</h1>
+        <h3>We'll see you at the party:)</h3>
+        <p>If you have time, will you help us build up a playlist? Fill in below</p>
+        <button>Add to Playlist</button>
+      </form>
+      <div class="container__card__back">
+        <h1>What is this?</h1>
+        <p>You should know by now but if you didn't Cam from #tech is leaving Kandua in June</p>
+        <br />
+        <p>So this is a little invitation to his fairwell at Kandua</p>
+        <br />
+        <h3>What is a boot jol?</h3>
+        <br />
+        <p>
+          A boot jol is basically a little party you have when you have a bumping sound system in your car...so you park somewhere, open up the boot, take out
+          your cooler box, grab a drink, bump some jtoons and vibe.
+        </p>
+        <br />
+        <h3>What is the plan?</h3>
+        <br />
+        <p>We will be setting up a little party at the office Parking on Smit Street. Some music, some drinks and a whole lot of vibes.</p>
+        <br />
+        <p>P.S. We may move the whole thing to the office if it is unsave and/or if it will be too cold.</p>
+      </div>
+    </div>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyB2-2leXq5T9eZyUUyijifIYt8CG_YPSwI",
+        authDomain: "boot-jol.firebaseapp.com",
+        projectId: "boot-jol",
+        storageBucket: "boot-jol.appspot.com",
+        messagingSenderId: "1085260930067",
+        appId: "1:1085260930067:web:facf18ed96694856c533e6",
+        measurementId: "G-6YJTK8C335",
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      const db = firebase.firestore();
+      db.settings({ timestampInSnapshots: true });
+    </script>
+    <script type="text/javascript" src="./app.js" charset="utf-8"></script>
+  </body>
+</html>
