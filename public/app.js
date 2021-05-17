@@ -9,8 +9,13 @@ const help = document.querySelector(".container__card__help");
 const rsvpButton = document.querySelector(".container__card__button");
 const playlistCard = document.querySelector(".container__playlistEntryCard");
 const loadingRing = document.querySelector(".container__card__loading");
+const playlistHeading = document.querySelector(".container__playlistEntryCard__heading");
+const lastCard = document.querySelector(".container__lastCard");
+const skipButton = document.querySelector(".container__card__button__skip");
 
 let cardFlipped = false;
+let user = null;
+let userId = null;
 
 container.addEventListener("mousemove", (e) => {
   if (!cardFlipped) {
@@ -74,7 +79,6 @@ cardInput.addEventListener("input", (e) => {
 card.addEventListener("submit", (e) => {
   e.preventDefault();
   loadingRing.hidden = false;
-  console.log("Looking for email: ", card.emailAddress.value);
 
   if (card.emailAddress.value.includes("@kandua.com")) {
     db.collection("peeps")
@@ -82,32 +86,50 @@ card.addEventListener("submit", (e) => {
       .get()
       .then((foundPeep) => {
         const { docs } = foundPeep;
-        console.log("found number of docs: ", docs.length);
-
         if (docs.length === 0) {
           db.collection("peeps")
             .add({
               email: card.emailAddress.value,
             })
             .then((res) => {
-              console.log("THE RESS: ", res);
+              userId = res.id;
               card.style.display = "none";
               playlistCard.style.display = "flex";
             });
+        } else {
+          loadingRing.hidden = true;
+          user = foundPeep.docs[0];
+          userId = foundPeep.docs[0].id;
+          playlistHeading.innerHTML = "You've already RSVP'd";
+
+          const songs = foundPeep.docs[0].data().songs;
+
+          if (songs && songs.length > 0) {
+            songs.forEach((song, i) => {
+              const title = document.getElementById(`title${i}`);
+              const artist = document.getElementById(`artist${i}`);
+
+              title.value = song.title;
+              artist.value = song.artist;
+            });
+          }
+          card.style.display = "none";
+          playlistCard.style.display = "flex";
         }
       });
   } else {
     cardError.innerText = "You can only RSVP using your Kandua email address";
     cardError.hidden = false;
+    loadingRing.hidden = true;
   }
 });
 
 playlistCard.addEventListener("submit", (e) => {
   e.preventDefault();
-
   let songs = [];
+  loadingRing.hidden = false;
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 6; i++) {
     const title = document.getElementById(`title${i}`);
     const artist = document.getElementById(`artist${i}`);
 
@@ -118,4 +140,22 @@ playlistCard.addEventListener("submit", (e) => {
       });
     }
   }
+
+  db.collection("peeps")
+    .doc(userId)
+    .update({
+      songs,
+    })
+    .then(() => {
+      loadingRing.hidden = true;
+      playlistCard.style.display = "none";
+      lastCard.style.display = "flex";
+    });
+});
+
+skipButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  loadingRing.hidden = true;
+  playlistCard.style.display = "none";
+  lastCard.style.display = "flex";
 });

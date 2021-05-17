@@ -38,7 +38,8 @@ body {
   position: absolute;
 }
 
-.container__playlistEntryCard {
+.container__playlistEntryCard,
+.container__lastCard {
   display: none;
   align-items: center;
   justify-content: flex-start;
@@ -62,6 +63,11 @@ body {
 
 .container__playlistEntryCard__subHeading {
   text-align: center;
+  margin-bottom: 10px;
+}
+
+.container__playlistEntryCard__message {
+  margin-bottom: 10px;
 }
 
 .container__playlistEntryCard__playlist {
@@ -70,15 +76,19 @@ body {
   flex-direction: column;
   width: 100%;
 }
-
 .container__playlistEntryCard__playlist__titles {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 
 .container__playlistEntryCard__playlist__titles > h4 {
   width: 50%;
-  text-align: center;
+}
+
+.container__playlistEntryCard__playlist__titles__artist {
+  padding-left: 15px;
 }
 
 .container__playlistEntryCard__playlist__songInput {
@@ -98,6 +108,34 @@ body {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.container__card__addToCalendar {
+  height: 40px;
+  animation: pulse 1.5s infinite;
+}
+
+.container__card__addToCalendar__link {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(4.5px);
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(0.95);
+  }
 }
 
 .container__card__back {
@@ -165,6 +203,17 @@ body {
   margin-top: 20px;
   margin-bottom: 10px;
   background-color: #e1908c;
+  cursor: pointer;
+}
+
+.container__card__button__skip {
+  height: 50px;
+  width: 200px;
+  border-radius: 100px;
+  box-shadow: none;
+  border: none;
+  margin-top: 4px;
+  border: 1px solid #e1908c;
   cursor: pointer;
 }
 

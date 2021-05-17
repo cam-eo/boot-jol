@@ -35,14 +35,13 @@
         <a class="container__card__help">What is this?</a>
       </form>
       <form class="container__playlistEntryCard">
-        <h2 class="container__playlistEntryCard__heading">Thank you for RSVP'ing</h2>
-        <h3 class="container__playlistEntryCard__subHeading">
-          That's all we need but if you have time please give us some song recommendations for the playlist
-        </h3>
+        <h2 class="container__playlistEntryCard__heading">Thanks for RSVP'ing</h2>
+        <h3 class="container__playlistEntryCard__subHeading">See you there</h3>
+        <p class="container__playlistEntryCard__message">If you have time, will you help us build up a playlist? Fill in below</p>
         <div class="container__playlistEntryCard__playlist">
           <div class="container__playlistEntryCard__playlist__titles">
             <h4>Title</h4>
-            <h4>Artist</h4>
+            <h4 class="container__playlistEntryCard__playlist__titles__artist">Artist</h4>
           </div>
           <div class="container__playlistEntryCard__playlist__songInput"><input id="title0" /><input id="artist0" /></div>
           <div class="container__playlistEntryCard__playlist__songInput"><input id="title1" /><input id="artist1" /></div>
@@ -51,18 +50,33 @@
           <div class="container__playlistEntryCard__playlist__songInput"><input id="title4" /><input id="artist4" /></div>
           <div class="container__playlistEntryCard__playlist__songInput"><input id="title5" /><input id="artist5" /></div>
           <div class="container__playlistEntryCard__playlist__songInput"><input id="title6" /><input id="artist6" /></div>
-          <div class="container__playlistEntryCard__playlist__songInput"><input id="title7" /><input id="artist7" /></div>
-          <div class="container__playlistEntryCard__playlist__songInput"><input id="title8" /><input id="artist8" /></div>
-          <div class="container__playlistEntryCard__playlist__songInput"><input id="title9" /><input id="artist9" /></div>
+          <img class="container__card__loading" src="./images/loading.svg" hidden />
           <button type="submit" class="container__card__button">Submit</button>
+          <button class="container__card__button__skip">Skip</button>
+          <a
+            class="container__card__addToCalendar__link"
+            target="_blank"
+            href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=MjFoNTNocnBkOW83Njgxb2pmNXJscHJwdXMgY2FtZXJvbkBrYW5kdWEuY29t&amp;tmsrc=cameron%40kandua.com"
+          >
+            <img class="container__card__addToCalendar" src="./images/add_to_calender.svg" />
+          </a>
         </div>
       </form>
-      <form class="container__playlistCard">
-        <h1>Thank you for RSVP'ing</h1>
-        <h3>We'll see you at the party:)</h3>
-        <p>If you have time, will you help us build up a playlist? Fill in below</p>
-        <button>Add to Playlist</button>
-      </form>
+      <div class="container__lastCard">
+        <h1>Thanks for the tracks</h1>
+        <h3>See you at the party:)</h3>
+        <div class="container__card__graphics">
+          <img class="container__card__graphics__sky" src="./images/city.svg" />
+          <img class="container__card__graphics__graphic" src="./images/dance_party.svg" />
+        </div>
+        <a
+          class="container__card__addToCalendar__link"
+          target="_blank"
+          href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=MjFoNTNocnBkOW83Njgxb2pmNXJscHJwdXMgY2FtZXJvbkBrYW5kdWEuY29t&amp;tmsrc=cameron%40kandua.com"
+        >
+          <img class="container__card__addToCalendar" src="./images/add_to_calender.svg" />
+        </a>
+      </div>
       <div class="container__card__back">
         <h1>What is this?</h1>
         <p>You should know by now but if you didn't Cam from #tech is leaving Kandua in June</p>
