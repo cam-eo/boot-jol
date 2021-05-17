@@ -2,6 +2,7 @@ const songCount = document.querySelector(".playlist_count");
 const artistList = document.querySelector(".playlist__artists");
 const titleList = document.querySelector(".playlist_titles");
 const playlist = document.querySelector(".playlist");
+const loading = document.querySelector(".playlist__loading");
 
 db.collection("peeps")
   .get()
@@ -34,7 +35,10 @@ db.collection("peeps")
       }
     });
 
-    songs.forEach((displaySong) => {
+    songs.forEach((displaySong, j) => {
+      if (j === 0) {
+        loading.hidden = true;
+      }
       let row = playlist.insertRow();
       let count = row.insertCell(0);
       count.innerHTML = displaySong.count;
