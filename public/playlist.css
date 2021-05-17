@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: azure;
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 95vw;
+  border: 1px solid darkgray;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.container > h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.playlist {
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.playlist td,
+.playlist th {
+  text-align: center;
+}
+
+#right,
+.playlist td + td,
+.playlist th + th {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.playlist__topRow {
+  background-color: #e1908c;
+}

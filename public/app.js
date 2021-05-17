@@ -5,6 +5,8 @@ const cardError = document.querySelector(".container__card__error");
 const cardInput = document.querySelector(".container__card__nameInput");
 const graphic = document.querySelector(".container__card__graphics__graphic");
 const sky = document.querySelector(".container__card__graphics__sky");
+const graphicLast = document.querySelector(".container__card__graphics__graphicLast");
+const skyLast = document.querySelector(".container__card__graphics__skyLast");
 const help = document.querySelector(".container__card__help");
 const rsvpButton = document.querySelector(".container__card__button");
 const playlistCard = document.querySelector(".container__playlistEntryCard");
@@ -18,15 +20,18 @@ let user = null;
 let userId = null;
 
 container.addEventListener("mousemove", (e) => {
+  let xAxis = window.innerWidth / 2 - e.pageX;
+  let yAxis = window.innerHeight / 2 - e.pageY;
   if (!cardFlipped) {
-    let xAxis = window.innerWidth / 2 - e.pageX;
-    let yAxis = window.innerHeight / 2 - e.pageY;
-
     card.style.transform = `rotateY(${yAxis / 25}deg) rotateX(${xAxis / 25}deg)`;
 
     graphic.style.transform = `rotateY(${yAxis / 10}deg) rotateX(${xAxis / 10}deg) translateZ(50px)`;
     sky.style.transform = `rotateY(${yAxis / 15}deg) rotateX(${xAxis / 15}deg) translateZ(25px)`;
   }
+
+  lastCard.style.transform = `rotateY(${yAxis / 25}deg) rotateX(${xAxis / 25}deg)`;
+  graphicLast.style.transform = `rotateY(${yAxis / 10}deg) rotateX(${xAxis / 10}deg) translateZ(50px)`;
+  skyLast.style.transform = `rotateY(${yAxis / 15}deg) rotateX(${xAxis / 15}deg) translateZ(25px)`;
 });
 
 container.addEventListener("mouseenter", (e) => {
@@ -35,6 +40,10 @@ container.addEventListener("mouseenter", (e) => {
     graphic.style.transition = `none`;
     sky.style.transition = `none`;
   }
+
+  lastCard.style.transition = `none`;
+  graphicLast.style.transition = `none`;
+  skyLast.style.transition = `none`;
 });
 
 container.addEventListener("mouseleave", (e) => {
@@ -47,6 +56,14 @@ container.addEventListener("mouseleave", (e) => {
     graphic.style.transition = `all 0.5s ease`;
     sky.style.transition = `all 0.5s ease`;
   }
+
+  lastCard.style.transform = `rotateY(0deg) rotateX(0deg)`;
+  graphicLast.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0)`;
+  skyLast.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0)`;
+
+  lastCard.style.transition = `all 0.5s ease`;
+  graphicLast.style.transition = `all 0.5s ease`;
+  skyLast.style.transition = `all 0.5s ease`;
 });
 
 help.addEventListener("click", (e) => {

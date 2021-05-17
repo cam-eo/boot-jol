@@ -102,6 +102,7 @@ body {
   margin: 5px;
   height: 25px;
   border-radius: 4px;
+  padding-left: 4px;
 }
 
 .container__playlistEntryCard__addRow {
@@ -151,16 +152,38 @@ body {
   transform: rotateY(180deg);
   transform-style: preserve-3d;
   background-color: white;
+  background: linear-gradient(to bottom left, #c58886, #7796bb);
   border-radius: 20px;
   width: 400px;
   height: 700px;
   border: 1px solid lightgray;
   cursor: pointer;
+  transition: "background" 1s;
+}
+
+.container__card__back > h3 {
+  text-decoration: underline;
+  margin-bottom: 10px;
+  text-decoration-color: white;
+}
+
+.container__card__back > h1 {
+  text-decoration: underline;
+  margin-bottom: 10px;
+  text-decoration-color: white;
+}
+
+.container__card__back__return {
+  color: white;
+  bottom: 20px;
+  position: absolute;
+  z-index: 1;
 }
 
 .container__card > h2 {
   font-weight: 300;
 }
+
 .container__card__graphics {
   min-height: 45vh;
   display: flex;
@@ -168,7 +191,8 @@ body {
   justify-content: center;
 }
 
-.container__card__graphics__sky {
+.container__card__graphics__sky,
+.container__card__graphics__skyLast {
   opacity: 70%;
   width: 300px;
   background: linear-gradient(to bottom, rgba(245, 70, 66, 0.75), rgba(8, 83, 156, 0.75));
@@ -178,7 +202,8 @@ body {
   z-index: 1;
 }
 
-.container__card__graphics__graphic {
+.container__card__graphics__graphic,
+.container__card__graphics__graphicLast {
   position: absolute;
   width: 350px;
   object-fit: contain;
@@ -243,6 +268,13 @@ body {
   color: #fb564c;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.container__lastCard__fullPlaylist {
+  color: #fb564c;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
 .container__playlistCard {

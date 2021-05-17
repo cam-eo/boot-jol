@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playlist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./playlist.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Playlist</h1>
+      <table class="playlist">
+        <thead>
+          <tr class="playlist__topRow">
+            <th>Count</th>
+            <th>Song</th>
+            <th>Artist</th>
+          </tr>
+        </thead>
+        <tbody id="testBody"></tbody>
+      </table>
+    </div>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyB2-2leXq5T9eZyUUyijifIYt8CG_YPSwI",
+        authDomain: "boot-jol.firebaseapp.com",
+        projectId: "boot-jol",
+        storageBucket: "boot-jol.appspot.com",
+        messagingSenderId: "1085260930067",
+        appId: "1:1085260930067:web:facf18ed96694856c533e6",
+        measurementId: "G-6YJTK8C335",
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      const db = firebase.firestore();
+      db.settings({ timestampInSnapshots: true });
+    </script>
+    <script type="text/javascript" src="./scripts/getPlaylist.js" charset="utf-8"></script>
+  </body>
+</html>
