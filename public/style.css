@@ -35,7 +35,8 @@ body {
   backface-visibility: hidden;
   transform: rotateY(-0deg);
   transform-style: preserve-3d;
-  position: absolute;
+  max-height: 700px;
+  
 }
 
 .container__playlistEntryCard,
@@ -185,7 +186,8 @@ body {
 }
 
 .container__card__graphics {
-  min-height: 45vh;
+  height: 350px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -312,5 +314,12 @@ body {
   .container__playlistEntryCard,
   .container__card__back {
     height: 95vh;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .container__card__graphics__sky,
+  .container__card__graphics__graphic {
+    width: 90vw;
   }
 }
